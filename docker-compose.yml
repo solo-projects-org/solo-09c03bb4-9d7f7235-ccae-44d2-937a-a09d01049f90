@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    image: borehole-alignment-api:latest
+    container_name: borehole-alignment-api
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: /data/boreholes.sqlite3
+    volumes:
+      - borehole-data:/data
+    restart: unless-stopped
+
+volumes:
+  borehole-data:
